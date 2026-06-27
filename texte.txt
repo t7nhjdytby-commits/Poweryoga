@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power Yoga — 5 Month Curriculum</title>
+<style>
+ @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+ :root {
+   --ink: #1a1612;
+   --ash: #f0ebe3;
+   --stone: #9c9088;
+   --ember: #c4622d;
+   --sage: #5c7a5f;
+   --warm-white: #faf7f2;
+   --divider: #e0d8ce;
+ }
+
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+ body {
+   font-family: 'DM Sans', sans-serif;
+   background: var(--warm-white);
+   color: var(--ink);
+   min-height: 100vh;
+ }
+
+ /* HERO */
+ .hero {
+   background: var(--ink);
+   color: var(--ash);
+   padding: 64px 32px 56px;
+   text-align: center;
+   position: relative;
+   overflow: hidden;
+ }
+ .hero::before {
+   content: '';
+   position: absolute;
+   top: -60px; right: -60px;
+   width: 280px; height: 280px;
+   border-radius: 50%;
+   background: radial-gradient(circle, rgba(196,98,45,0.18) 0%, transparent 70%);
+ }
+ .hero-eyebrow {
+   font-family: 'DM Sans', sans-serif;
+   font-size: 11px;
+   font-weight: 500;
+   letter-spacing: 0.2em;
+   text-transform: uppercase;
+   color: var(--ember);
+   margin-bottom: 18px;
+ }
+ .hero h1 {
+   font-family: 'Cormorant Garamond', serif;
+   font-size: clamp(42px, 8vw, 72px);
+   font-weight: 300;
+   line-height: 1.05;
+   margin-bottom: 16px;
+   letter-spacing: -0.01em;
+ }
+ .hero h1 em {
+   font-style: italic;
+   color: var(--ember);
+ }
+ .hero-sub {
+   font-size: 15px;
+   font-weight: 300;
+   color: var(--stone);
+   max-width: 440px;
+   margin: 0 auto 36px;
+   line-height: 1.6;
+ }
+ .hero-stats {
+   display: flex;
+   justify-content: center;
+   gap: 40px;
+   flex-wrap: wrap;
+ }
+ .stat { text-align: center; }
+ .stat-num {
+   font-family: 'Cormorant Garamond', serif;
+   font-size: 32px;
+   font-weight: 600;
+   color: var(--ash);
+   display: block;
+ }
+ .stat-label {
+   font-size: 11px;
+   letter-spacing: 0.15em;
+   text-transform: uppercase;
+   color: var(--stone);
+ }
+
+ /* NAV */
+ .month-nav {
+   background: var(--ash);
+   border-bottom: 1px solid var(--divider);
+   padding: 0 24px;
+   display: flex;
+   gap: 0;
+   overflow-x: auto;
+   scrollbar-width: none;
+   position: sticky;
+   top: 0;
+   z-index: 10;
+ }
+ .month-nav::-webkit-scrollbar { display: none; }
+ .nav-btn {
+   padding: 16px 20px;
+   font-family: 'DM Sans', sans-serif;
+   font-size: 12px;
+   font-weight: 500;
+   letter-spacing: 0.1em;
+   text-transform: uppercase;
+   color: var(--stone);
+   background: none;
+   border: none;
+   border-bottom: 2px solid transparent;
+   cursor: pointer;
+   white-space: nowrap;
+   transition: all 0.2s;
+ }
+ .nav-btn:hover { color: var(--ink); }
+ .nav-btn.active {
+   color: var(--ember);
+   border-bottom-color: var(--ember);
+ }
+
+ /* MAIN */
+ .main { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+
+ /* MONTH PANEL */
+ .month-panel { display: none; padding-top: 48px; }
+ .month-panel.active { display: block; }
+
+ .month-header {
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-between;
+   gap: 24px;
+   margin-bottom: 40px;
+   flex-wrap: wrap;
+ }
+ .month-title-group { flex: 1; min-width: 240px; }
+ .month-number {
+   font-family: 'Cormorant Garamond', serif;
+   font-size: 80px;
+   font-weight: 300;
+   color: var(--divider);
+   line-height: 1;
+   margin-bottom: -8px;
+ }
+ .month-name {
+   font-family: 'Cormorant Garamond', serif;
+   font-size: 36px;
+   font-weight: 400;
+   line-height: 1.1;
+ }
+ .month-theme {
+   font-family: 'Cormorant Garamond', serif;
+   font-style: italic;
+   font-size: 18px;
+   color: var(--ember);
+   margin-top: 4px;
+ }
+ .month-intention {
+   max-width: 340px;
+   background: var(--ash);
+   border-left: 2px solid var(--ember);
+   padding: 16px 20px;
+   font-size: 13px;
+   line-height: 1.7;
+   color: var(--stone);
+   border-radius: 0 4px 4px 0;
+   align-self: flex-start;
+ }
+ .month-intention strong {
+   display: block;
+   font-size: 10px;
+   letter-spacing: 0.15em;
+   text-transform: uppercase;
+   color: var(--ember);
+   margin-bottom: 6px;
+   font-family: 'DM Sans', sans-serif;
+ }
+
+ /* WEEKS */
+ .weeks-label {
+   font-size: 10px;
+   font-weight: 500;
+   letter-spacing: 0.2em;
+   text-transform: uppercase;
+   color: var(--stone);
+   margin-bottom: 16px;
+   padding-bottom: 8px;
+   border-bottom: 1px solid var(--divider);
+ }
+
+ .week {
+   margin-bottom: 12px;
+   border: 1px solid var(--divider);
+   border-radius: 6px;
+   background: #fff;
+   overflow: hidden;
+   transition: box-shadow 0.2s;
+ }
+ .week:hover { box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+
+ .week-header {
+   display: flex;
+   align-items: center;
+   gap: 16px;
+   padding: 16px 20px;
+   cursor: pointer;
+   user-select: none;
+ }
+ .week-num {
+   font-family: 'Cormorant Garamond', serif;
+   font-size: 22px;
+   font-weight: 600;
+   color: var(--divider);
+   min-width: 32px;
+ }
+ .week-info { flex: 1; }
+ .week-title {
+   font-weight: 500;
+   font-size: 14px;
+   color: var(--ink);
+ }
+ .week-focus {
+   font-size: 12px;
+   color: var(--stone);
+   margin-top: 2px;
+ }
+ .week-toggle {
+   font-size: 18px;
+   color: var(--stone);
+   transition: transform 0.2s;
+   line-height: 1;
+ }
+ .week.open .week-toggle { transform: rotate(45deg); }
+
+ .week-body {
+   display: none;
+   padding: 0 20px 20px;
+   border-top: 1px solid var(--divider);
+ }
+ .week.open .week-body { display: block; }
+
+ .sequence {
+   margin-top: 16px;
+ }
+ .seq-section {
+   margin-bottom: 20px;
+ }
+ .seq-label {
+   font-size: 10px;
+   font-weight: 500;
+   letter-spacing: 0.2em;
+   text-transform: uppercase;
+   color: var(--stone);
+   margin-bottom: 10px;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+ }
+ .seq-label::after {
+   content: '';
+   flex: 1;
+   height: 1px;
+   background: var(--divider);
+ }
+ .seq-time {
+   color: var(--ember);
+   font-variant-numeric: tabular-nums;
+ }
+ .poses {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 6px;
+ }
+ .pose {
+   background: var(--ash);
+   border-radius: 3px;
+   padding: 5px 10px;
+   font-size: 12px;
+   color: var(--ink);
+   line-height: 1.3;
+ }
+ .pose.peak {
+   background: var(--ink);
+   color: var(--ash);
+ }
+ .pose.new {
+   background: var(--sage);
+   color: #fff;
+ }
+ .cue {
+   margin-top: 10px;
+   font-size: 12px;
+   font-style: italic;
+   color: var(--stone);
+   line-height: 1.6;
+   padding-left: 12px;
+   border-left: 2px solid var(--divider);
+ }
+
+ /* PROGRESS BAR */
+ .progress-bar-wrap {
+   margin: 40px 0 0;
+   padding: 24px;
+   background: var(--ash);
+   border-radius: 8px;
+ }
+ .progress-bar-label {
+   font-size: 11px;
+   letter-spacing: 0.15em;
+   text-transform: uppercase;
+   color: var(--stone);
+   margin-bottom: 12px;
+ }
+ .progress-track {
+   height: 4px;
+   background: var(--divider);
+   border-radius: 2px;
+   overflow: hidden;
+ }
+ .progress-fill {
+   height: 100%;
+   background: linear-gradient(90deg, var(--sage), var(--ember));
+   border-radius: 2px;
+   transition: width 0.4s ease;
+ }
+ .progress-months {
+   display: flex;
+   justify-content: space-between;
+   margin-top: 8px;
+ }
+ .pm {
+   font-size: 10px;
+   color: var(--stone);
+ }
+ .pm.done { color: var(--ember); font-weight: 500; }
+
+ /* LEGEND */
+ .legend {
+   display: flex;
+   gap: 16px;
+   flex-wrap: wrap;
+   margin-bottom: 24px;
+ }
+ .legend-item {
+   display: flex;
+   align-items: center;
+   gap: 6px;
+   font-size: 11px;
+   color: var(--stone);
+ }
+ .legend-dot {
+   width: 10px; height: 10px;
+   border-radius: 2px;
+ }
+ .ld-base { background: var(--ash); border: 1px solid var(--divider); }
+ .ld-peak { background: var(--ink); }
+ .ld-new { background: var(--sage); }
+
+ @media (max-width: 600px) {
+   .hero { padding: 48px 20px 40px; }
+   .month-header { flex-direction: column; }
+   .month-intention { max-width: 100%; }
+   .month-number { font-size: 56px; }
+ }
+</style>
+</head>
+<body>
+
+<div class="hero">
+ <p class="hero-eyebrow">Progressive Curriculum</p>
+ <h1>Power <em>Yoga</em></h1>
+ <p class="hero-sub">A five-month weekly practice designed to build strength, flexibility, and breath mastery — one session at a time.</p>
+ <div class="hero-stats">
+   <div class="stat"><span class="stat-num">5</span><span class="stat-label">Months</span></div>
+   <div class="stat"><span class="stat-num">20</span><span class="stat-label">Sessions</span></div>
+   <div class="stat"><span class="stat-num">60</span><span class="stat-label">Min / class</span></div>
+ </div>
+</div>
+
+<nav class="month-nav" id="monthNav">
+ <button class="nav-btn active" onclick="showMonth(0)">Month 1</button>
+ <button class="nav-btn" onclick="showMonth(1)">Month 2</button>
+ <button class="nav-btn" onclick="showMonth(2)">Month 3</button>
+ <button class="nav-btn" onclick="showMonth(3)">Month 4</button>
+ <button class="nav-btn" onclick="showMonth(4)">Month 5</button>
+</nav>
+
+<div class="main">
+
+ <!-- MONTH 1 -->
+ <div class="month-panel active" id="month-0">
+   <div class="month-header">
+     <div class="month-title-group">
+       <div class="month-number">01</div>
+       <div class="month-name">Foundation</div>
+       <div class="month-theme">Root Before You Rise</div>
+     </div>
+     <div class="month-intention">
+       <strong>Teacher's Intention</strong>
+       Build kinesthetic awareness. Introduce Ujjayi breath as the anchor for every vinyasa. Students learn how to enter and exit poses safely — quality over speed.
+     </div>
+   </div>
+
+   <div class="legend">
+     <div class="legend-item"><span class="legend-dot ld-base"></span> Familiar pose</div>
+     <div class="legend-item"><span class="legend-dot ld-peak"></span> Peak pose</div>
+     <div class="legend-item"><span class="legend-dot ld-new"></span> Newly introduced</div>
+   </div>
+
+   <p class="weeks-label">4 Sessions</p>
+
+   <!-- W1 -->
+   <div class="week" id="w1">
+     <div class="week-header" onclick="toggleWeek('w1')">
+       <span class="week-num">1</span>
+       <div class="week-info">
+         <div class="week-title">Earth & Breath</div>
+         <div class="week-focus">Sun Salutation A · Standing fundamentals · Supine close</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Centering <span class="seq-time">· 8 min</span></div>
+           <div class="poses">
+             <span class="pose">Sukhasana</span>
+             <span class="pose">Ujjayi introduction</span>
+             <span class="pose">Seated lateral stretch</span>
+             <span class="pose">Cat-Cow x 8</span>
+           </div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Warm-up <span class="seq-time">· 10 min</span></div>
+           <div class="poses">
+             <span class="pose">Downdog walk-out</span>
+             <span class="pose">Lunge twists</span>
+             <span class="pose">Plank holds</span>
+           </div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Standing Flow <span class="seq-time">· 22 min</span></div>
+           <div class="poses">
+             <span class="pose">Sun Sal A × 5</span>
+             <span class="pose new">Warrior I</span>
+             <span class="pose new">Warrior II</span>
+             <span class="pose">Extended Side Angle</span>
+             <span class="pose">Triangle</span>
+           </div>
+           <p class="cue">"Let the breath lead — if you've lost the breath, you've lost the pose."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Peak <span class="seq-time">· 8 min</span></div>
+           <div class="poses">
+             <span class="pose peak">Warrior II hold 10 breaths each side</span>
+           </div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Cool-down <span class="seq-time">· 12 min</span></div>
+           <div class="poses">
+             <span class="pose">Supine twist</span>
+             <span class="pose">Happy Baby</span>
+             <span class="pose">Savasana 5 min</span>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <!-- W2 -->
+   <div class="week" id="w2">
+     <div class="week-header" onclick="toggleWeek('w2')">
+       <span class="week-num">2</span>
+       <div class="week-info">
+         <div class="week-title">Core Awakening</div>
+         <div class="week-focus">Sun Sal A+B · Core engagement · First backbend</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Centering <span class="seq-time">· 7 min</span></div>
+           <div class="poses"><span class="pose">Pranayama 3-part breath</span><span class="pose">Reclined leg stretches</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Warm-up <span class="seq-time">· 8 min</span></div>
+           <div class="poses"><span class="pose">Sun Sal A × 3</span><span class="pose new">Boat pose intro</span><span class="pose">Plank to Chaturanga practice</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Standing Flow <span class="seq-time">· 24 min</span></div>
+           <div class="poses">
+             <span class="pose new">Sun Sal B × 3</span>
+             <span class="pose">Warrior I → II → Reverse Warrior</span>
+             <span class="pose">Crescent Lunge</span>
+             <span class="pose new">Chair pose</span>
+             <span class="pose">Standing balance: Tree</span>
+           </div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Peak <span class="seq-time">· 9 min</span></div>
+           <div class="poses"><span class="pose peak">Locust pose series</span><span class="pose peak">Baby Cobra → Cobra</span></div>
+           <p class="cue">"Lengthen before you lift — create space in the spine first."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Cool-down <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Child's pose</span><span class="pose">Supine pigeon</span><span class="pose">Savasana</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <!-- W3 -->
+   <div class="week" id="w3">
+     <div class="week-header" onclick="toggleWeek('w3')">
+       <span class="week-num">3</span>
+       <div class="week-info">
+         <div class="week-title">Hip Opening & Balance</div>
+         <div class="week-focus">Warrior III · Pyramid · Pigeon prep</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Centering <span class="seq-time">· 7 min</span></div>
+           <div class="poses"><span class="pose">Reclined hip circles</span><span class="pose">Figure-4 stretch</span><span class="pose">Ujjayi deepening</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Sun Salutations <span class="seq-time">· 10 min</span></div>
+           <div class="poses"><span class="pose">Sun Sal A × 3</span><span class="pose">Sun Sal B × 2</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Standing Flow <span class="seq-time">· 22 min</span></div>
+           <div class="poses">
+             <span class="pose new">Warrior III</span>
+             <span class="pose new">Pyramid (Parsvottanasana)</span>
+             <span class="pose">Half Moon prep</span>
+             <span class="pose">Goddess squat</span>
+           </div>
+           <p class="cue">"Root through the standing foot like you mean it — balance lives in the ground."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Floor Peak <span class="seq-time">· 9 min</span></div>
+           <div class="poses"><span class="pose peak">Figure-4 hip opener</span><span class="pose peak">Low Pigeon prep (Eka Pada Rajakapotasana)</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Cool-down <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Seated forward fold</span><span class="pose">Supine spinal twist</span><span class="pose">Savasana</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <!-- W4 -->
+   <div class="week" id="w4">
+     <div class="week-header" onclick="toggleWeek('w4')">
+       <span class="week-num">4</span>
+       <div class="week-info">
+         <div class="week-title">Integration Week</div>
+         <div class="week-focus">Full flow review · Build stamina · Introduce first inversion</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Centering <span class="seq-time">· 6 min</span></div>
+           <div class="poses"><span class="pose">Breath of Fire intro</span><span class="pose">Seated meditation 3 min</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Sun Salutations <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Sun Sal A × 4</span><span class="pose">Sun Sal B × 3</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Full Standing Flow <span class="seq-time">· 22 min</span></div>
+           <div class="poses">
+             <span class="pose">Warrior I → II → III</span>
+             <span class="pose">Triangle → Revolved Triangle</span>
+             <span class="pose">Chair → Eagle</span>
+             <span class="pose">Extended Hand-to-Big-Toe (strap OK)</span>
+           </div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Peak <span class="seq-time">· 8 min</span></div>
+           <div class="poses"><span class="pose peak new">Legs-up-the-Wall (Viparita Karani)</span><span class="pose peak">Shoulderstand prep with block</span></div>
+           <p class="cue">"Inversions shift your perspective — let gravity do the work today."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Cool-down <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Full Pigeon both sides</span><span class="pose">Reclined twist</span><span class="pose">Savasana 6 min</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="progress-bar-wrap">
+     <div class="progress-bar-label">5-Month Journey</div>
+     <div class="progress-track"><div class="progress-fill" style="width:20%"></div></div>
+     <div class="progress-months">
+       <span class="pm done">Foundation</span>
+       <span class="pm">Building</span>
+       <span class="pm">Deepening</span>
+       <span class="pm">Expanding</span>
+       <span class="pm">Integration</span>
+     </div>
+   </div>
+ </div>
+
+ <!-- MONTH 2 -->
+ <div class="month-panel" id="month-1">
+   <div class="month-header">
+     <div class="month-title-group">
+       <div class="month-number">02</div>
+       <div class="month-name">Building</div>
+       <div class="month-theme">Find Your Fire</div>
+     </div>
+     <div class="month-intention">
+       <strong>Teacher's Intention</strong>
+       Increase cardiovascular demand. Introduce arm balances and deeper backbends. Students begin to trust their strength and move with more fluidity between poses.
+     </div>
+   </div>
+
+   <div class="legend">
+     <div class="legend-item"><span class="legend-dot ld-base"></span> Familiar pose</div>
+     <div class="legend-item"><span class="legend-dot ld-peak"></span> Peak pose</div>
+     <div class="legend-item"><span class="legend-dot ld-new"></span> Newly introduced</div>
+   </div>
+
+   <p class="weeks-label">4 Sessions</p>
+
+   <div class="week" id="w5">
+     <div class="week-header" onclick="toggleWeek('w5')">
+       <span class="week-num">5</span>
+       <div class="week-info">
+         <div class="week-title">Ignite the Core</div>
+         <div class="week-focus">Navasana series · Chaturanga alignment · Boat to Low Boat</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Centering <span class="seq-time">· 6 min</span></div>
+           <div class="poses"><span class="pose">Kapalabhati pranayama</span><span class="pose">Supine core prep</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Sun Salutations <span class="seq-time">· 14 min</span></div>
+           <div class="poses"><span class="pose">Sun Sal A × 4</span><span class="pose">Sun Sal B × 4</span><span class="pose new">Jump-back / step-back choice</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Standing Flow <span class="seq-time">· 20 min</span></div>
+           <div class="poses">
+             <span class="pose">Warrior flow sequence</span>
+             <span class="pose new">Side Plank (Vasisthasana)</span>
+             <span class="pose new">Wild Thing from Side Plank</span>
+           </div>
+           <p class="cue">"Engage your bandhas — Mula and Uddiyana are your inner scaffolding."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Peak <span class="seq-time">· 8 min</span></div>
+           <div class="poses"><span class="pose peak">Navasana × 5 with Low Boat</span><span class="pose peak">Plank → Side Plank × 3</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Cool-down <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Pigeon</span><span class="pose">Seated twist</span><span class="pose">Savasana</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="week" id="w6">
+     <div class="week-header" onclick="toggleWeek('w6')">
+       <span class="week-num">6</span>
+       <div class="week-info">
+         <div class="week-title">First Arm Balance</div>
+         <div class="week-focus">Crow pose (Bakasana) · Wrist prep · Shoulder strength</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Centering + Wrist prep <span class="seq-time">· 8 min</span></div>
+           <div class="poses"><span class="pose">Wrist circles</span><span class="pose">Finger spreads</span><span class="pose">Tabletop forearm stretches</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Sun Salutations <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Sun Sal A × 3</span><span class="pose">Sun Sal B × 4</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Arm Balance Prep Flow <span class="seq-time">· 22 min</span></div>
+           <div class="poses">
+             <span class="pose">Malasana (squat)</span>
+             <span class="pose">Chair → Twisting Chair</span>
+             <span class="pose">Plank hover drill</span>
+             <span class="pose new">Crow pose (Bakasana) — blocks offered</span>
+           </div>
+           <p class="cue">"Lean forward until you think you'll fall — Crow lives at the edge of courage."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Peak <span class="seq-time">· 7 min</span></div>
+           <div class="poses"><span class="pose peak">Crow 3 × 30-sec attempts</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Cool-down <span class="seq-time">· 11 min</span></div>
+           <div class="poses"><span class="pose">Child's pose</span><span class="pose">Seated forward fold</span><span class="pose">Savasana</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="week" id="w7">
+     <div class="week-header" onclick="toggleWeek('w7')">
+       <span class="week-num">7</span>
+       <div class="week-info">
+         <div class="week-title">Deep Backbending</div>
+         <div class="week-focus">Wheel (Urdhva Dhanurasana) · Bridge series · Heart opening</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Centering <span class="seq-time">· 7 min</span></div>
+           <div class="poses"><span class="pose">Supported fish on block</span><span class="pose">Chest openers with strap</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Sun Salutations <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Sun Sal A × 3</span><span class="pose">Sun Sal B × 4</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Backbend Prep Flow <span class="seq-time">· 20 min</span></div>
+           <div class="poses">
+             <span class="pose">Camel (Ustrasana)</span>
+             <span class="pose">Upward Dog deepening</span>
+             <span class="pose">Bow pose (Dhanurasana)</span>
+             <span class="pose new">Bridge × 3 with wheel option</span>
+           </div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Peak <span class="seq-time">· 9 min</span></div>
+           <div class="poses"><span class="pose peak">Wheel (Urdhva Dhanurasana) × 3</span></div>
+           <p class="cue">"Press the floor away, soften the glutes, let the heart float up to the ceiling."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Counter-poses + Cool-down <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Knees to chest</span><span class="pose">Supine twist</span><span class="pose">Child's pose</span><span class="pose">Savasana</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="week" id="w8">
+     <div class="week-header" onclick="toggleWeek('w8')">
+       <span class="week-num">8</span>
+       <div class="week-info">
+         <div class="week-title">Flow & Speed</div>
+         <div class="week-focus">Faster vinyasa pace · Seamless transitions · Endurance</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Centering <span class="seq-time">· 5 min</span></div>
+           <div class="poses"><span class="pose">Box breathing</span><span class="pose">Gentle neck rolls</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Sun Salutations <span class="seq-time">· 15 min</span></div>
+           <div class="poses"><span class="pose">Sun Sal A × 5 (increasing pace)</span><span class="pose">Sun Sal B × 5</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Continuous Flow <span class="seq-time">· 25 min</span></div>
+           <div class="poses">
+             <span class="pose">Full Warrior sequence both sides</span>
+             <span class="pose">Crow × 2</span>
+             <span class="pose">Half Moon</span>
+             <span class="pose new">Revolved Half Moon</span>
+             <span class="pose">Wheel or Bridge</span>
+           </div>
+           <p class="cue">"Move with conviction — hesitation costs more energy than commitment."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Cool-down <span class="seq-time">· 15 min</span></div>
+           <div class="poses"><span class="pose">Pigeon both sides</span><span class="pose">Seated forward bend</span><span class="pose">Savasana 6 min</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="progress-bar-wrap">
+     <div class="progress-bar-label">5-Month Journey</div>
+     <div class="progress-track"><div class="progress-fill" style="width:40%"></div></div>
+     <div class="progress-months">
+       <span class="pm done">Foundation</span>
+       <span class="pm done">Building</span>
+       <span class="pm">Deepening</span>
+       <span class="pm">Expanding</span>
+       <span class="pm">Integration</span>
+     </div>
+   </div>
+ </div>
+
+ <!-- MONTH 3 -->
+ <div class="month-panel" id="month-2">
+   <div class="month-header">
+     <div class="month-title-group">
+       <div class="month-number">03</div>
+       <div class="month-name">Deepening</div>
+       <div class="month-theme">Go Inward</div>
+     </div>
+     <div class="month-intention">
+       <strong>Teacher's Intention</strong>
+       Introduce headstand and deeper hip openers. Students slow down inside complex poses to explore subtlety. Begin working with drishti (focused gaze) consistently.
+     </div>
+   </div>
+
+   <div class="legend">
+     <div class="legend-item"><span class="legend-dot ld-base"></span> Familiar pose</div>
+     <div class="legend-item"><span class="legend-dot ld-peak"></span> Peak pose</div>
+     <div class="legend-item"><span class="legend-dot ld-new"></span> Newly introduced</div>
+   </div>
+
+   <p class="weeks-label">4 Sessions</p>
+
+   <div class="week" id="w9">
+     <div class="week-header" onclick="toggleWeek('w9')">
+       <span class="week-num">9</span>
+       <div class="week-info">
+         <div class="week-title">Hip Liberation</div>
+         <div class="week-focus">Dragon · Lizard · Full Pigeon · Hanumanasana prep</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Centering <span class="seq-time">· 7 min</span></div>
+           <div class="poses"><span class="pose">Hip-focused body scan</span><span class="pose">Supine figure-4</span><span class="pose">Reclined butterfly</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Sun Salutations <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Sun Sal A × 3</span><span class="pose">Sun Sal B × 3</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Hip-Opening Flow <span class="seq-time">· 22 min</span></div>
+           <div class="poses">
+             <span class="pose new">Lizard (Utthan Pristhasana)</span>
+             <span class="pose new">Dragon pose (low lunge deep)</span>
+             <span class="pose">Warrior II → Peaceful Warrior</span>
+             <span class="pose new">Hanumanasana prep with blocks</span>
+           </div>
+           <p class="cue">"Hips hold history — breathe into resistance rather than forcing through it."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Peak <span class="seq-time">· 7 min</span></div>
+           <div class="poses"><span class="pose peak">Full Pigeon each side × 2 min hold</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Cool-down <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Double pigeon (Firelog)</span><span class="pose">Supine twist</span><span class="pose">Savasana</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="week" id="w10">
+     <div class="week-header" onclick="toggleWeek('w10')">
+       <span class="week-num">10</span>
+       <div class="week-info">
+         <div class="week-title">King of Inversions</div>
+         <div class="week-focus">Headstand (Sirsasana) · Wall-supported · Tripod prep</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Shoulder & neck prep <span class="seq-time">· 10 min</span></div>
+           <div class="poses"><span class="pose">Dolphin holds</span><span class="pose">Forearm plank</span><span class="pose">Neck mobility work</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Sun Salutations <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Sun Sal A × 3</span><span class="pose">Sun Sal B × 3</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Inversion Prep Flow <span class="seq-time">· 18 min</span></div>
+           <div class="poses">
+             <span class="pose">Downdog → Dolphin × 5</span>
+             <span class="pose new">Tripod headstand at wall</span>
+             <span class="pose new">Supported headstand (Sirsasana) at wall</span>
+             <span class="pose">Crow</span>
+           </div>
+           <p class="cue">"70% of the weight is arms and shoulders — the head is merely a guide."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Peak <span class="seq-time">· 8 min</span></div>
+           <div class="poses"><span class="pose peak">Sirsasana hold 5–10 breaths (wall)</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Cool-down <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Child's pose 3 min</span><span class="pose">Pigeon</span><span class="pose">Savasana</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="week" id="w11">
+     <div class="week-header" onclick="toggleWeek('w11')">
+       <span class="week-num">11</span>
+       <div class="week-info">
+         <div class="week-title">Twists & Detox</div>
+         <div class="week-focus">Revolved poses · Parivrtta series · Seated twists</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Centering <span class="seq-time">· 7 min</span></div>
+           <div class="poses"><span class="pose">Nadi Shodhana (alternate nostril)</span><span class="pose">Seated twist intro</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Sun Salutations <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Sun Sal A × 3</span><span class="pose">Sun Sal B with twists added</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Twisting Flow <span class="seq-time">· 22 min</span></div>
+           <div class="poses">
+             <span class="pose">Revolved Crescent Lunge</span>
+             <span class="pose">Revolved Triangle</span>
+             <span class="pose">Revolved Half Moon</span>
+             <span class="pose new">Revolved Chair (Parivrtta Utkatasana)</span>
+           </div>
+           <p class="cue">"Lengthen on the inhale, deepen the twist on the exhale — never force the rotation."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Peak <span class="seq-time">· 7 min</span></div>
+           <div class="poses"><span class="pose peak">Ardha Matsyendrasana each side 2 min</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Cool-down <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Supine twist</span><span class="pose">Knees to chest</span><span class="pose">Savasana</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="week" id="w12">
+     <div class="week-header" onclick="toggleWeek('w12')">
+       <span class="week-num">12</span>
+       <div class="week-info">
+         <div class="week-title">Stamina & Fluidity</div>
+         <div class="week-focus">40-min continuous flow · No breaks · Full body integration</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Centering <span class="seq-time">· 5 min</span></div>
+           <div class="poses"><span class="pose">Intention setting</span><span class="pose">Kapalabhati × 2 rounds</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Continuous Power Flow <span class="seq-time">· 40 min</span></div>
+           <div class="poses">
+             <span class="pose">Sun Sals A+B × 6 total</span>
+             <span class="pose">Full warrior sequence</span>
+             <span class="pose">Crow → Headstand</span>
+             <span class="pose">Wheel × 3</span>
+             <span class="pose">Pigeon</span>
+           </div>
+           <p class="cue">"This is your practice made whole. Stay with the breath — it will carry you."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Cool-down <span class="seq-time">· 15 min</span></div>
+           <div class="poses"><span class="pose">Extended Savasana 8 min</span><span class="pose">Yoga Nidra intro</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="progress-bar-wrap">
+     <div class="progress-bar-label">5-Month Journey</div>
+     <div class="progress-track"><div class="progress-fill" style="width:60%"></div></div>
+     <div class="progress-months">
+       <span class="pm done">Foundation</span>
+       <span class="pm done">Building</span>
+       <span class="pm done">Deepening</span>
+       <span class="pm">Expanding</span>
+       <span class="pm">Integration</span>
+     </div>
+   </div>
+ </div>
+
+ <!-- MONTH 4 -->
+ <div class="month-panel" id="month-3">
+   <div class="month-header">
+     <div class="month-title-group">
+       <div class="month-number">04</div>
+       <div class="month-name">Expanding</div>
+       <div class="month-theme">Break Your Edges</div>
+     </div>
+     <div class="month-intention">
+       <strong>Teacher's Intention</strong>
+       Push into advanced territory: forearm balance, split work, and complex arm balances. Students have the tools — now we explore what's possible.
+     </div>
+   </div>
+
+   <div class="legend">
+     <div class="legend-item"><span class="legend-dot ld-base"></span> Familiar pose</div>
+     <div class="legend-item"><span class="legend-dot ld-peak"></span> Peak pose</div>
+     <div class="legend-item"><span class="legend-dot ld-new"></span> Newly introduced</div>
+   </div>
+
+   <p class="weeks-label">4 Sessions</p>
+
+   <div class="week" id="w13">
+     <div class="week-header" onclick="toggleWeek('w13')">
+       <span class="week-num">13</span>
+       <div class="week-info">
+         <div class="week-title">Forearm Balance Prep</div>
+         <div class="week-focus">Pincha Mayurasana · L-shape at wall · Dolphin series</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Shoulder Opening Warm-up <span class="seq-time">· 10 min</span></div>
+           <div class="poses"><span class="pose">Gomukhasana arms</span><span class="pose">Thread the needle</span><span class="pose">Dolphin × 10</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Sun Salutations <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Sun Sal A × 3</span><span class="pose">Sun Sal B × 4</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Inversion Flow <span class="seq-time">· 20 min</span></div>
+           <div class="poses">
+             <span class="pose">Headstand away from wall</span>
+             <span class="pose new">L-shape at wall (Pincha prep)</span>
+             <span class="pose new">Pincha Mayurasana at wall</span>
+           </div>
+           <p class="cue">"Stack hips over shoulders, shoulders over elbows — alignment is the whole game here."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Peak <span class="seq-time">· 7 min</span></div>
+           <div class="poses"><span class="pose peak">Pincha hold at wall 3 attempts</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Cool-down <span class="seq-time">· 11 min</span></div>
+           <div class="poses"><span class="pose">Child's pose</span><span class="pose">Pigeon</span><span class="pose">Savasana</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="week" id="w14">
+     <div class="week-header" onclick="toggleWeek('w14')">
+       <span class="week-num">14</span>
+       <div class="week-info">
+         <div class="week-title">Splits & Hamstrings</div>
+         <div class="week-focus">Hanumanasana full · Pyramid deep · Standing splits</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Hamstring Warm-up <span class="seq-time">· 10 min</span></div>
+           <div class="poses"><span class="pose">Reclined leg stretches with strap</span><span class="pose">Standing forward bend</span><span class="pose">PNF hamstring stretches</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Sun Salutations <span class="seq-time">· 10 min</span></div>
+           <div class="poses"><span class="pose">Sun Sal A × 3</span><span class="pose">Sun Sal B × 3</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Flexibility Flow <span class="seq-time">· 22 min</span></div>
+           <div class="poses">
+             <span class="pose">Pyramid deep hold</span>
+             <span class="pose new">Standing splits</span>
+             <span class="pose">Warrior III → Standing splits</span>
+             <span class="pose">Dragon low lunge deep</span>
+           </div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Peak <span class="seq-time">· 8 min</span></div>
+           <div class="poses"><span class="pose peak">Hanumanasana (full splits) with blocks</span></div>
+           <p class="cue">"Progress in splits is measured in months, not sessions. Celebrate where you are."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Cool-down <span class="seq-time">· 10 min</span></div>
+           <div class="poses"><span class="pose">Double pigeon</span><span class="pose">Seated forward fold 3 min</span><span class="pose">Savasana</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="week" id="w15">
+     <div class="week-header" onclick="toggleWeek('w15')">
+       <span class="week-num">15</span>
+       <div class="week-info">
+         <div class="week-title">Advanced Arm Balances</div>
+         <div class="week-focus">Side Crow · Eka Pada Koundinyasana · Flying Lizard</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Wrist + Core Activation <span class="seq-time">· 8 min</span></div>
+           <div class="poses"><span class="pose">Wrist prep series</span><span class="pose">Core navasana series</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Sun Salutations <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Sun Sal A × 3</span><span class="pose">Sun Sal B × 4</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Arm Balance Ladder <span class="seq-time">· 22 min</span></div>
+           <div class="poses">
+             <span class="pose">Crow</span>
+             <span class="pose new">Side Crow (Parsva Bakasana)</span>
+             <span class="pose new">Eka Pada Koundinyasana I prep</span>
+             <span class="pose new">Flying Lizard attempt</span>
+           </div>
+           <p class="cue">"Arm balances are 80% core, 20% arms. Look forward, squeeze your midline."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Cool-down <span class="seq-time">· 18 min</span></div>
+           <div class="poses"><span class="pose">Full forward fold series</span><span class="pose">Pigeon both sides</span><span class="pose">Savasana 7 min</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="week" id="w16">
+     <div class="week-header" onclick="toggleWeek('w16')">
+       <span class="week-num">16</span>
+       <div class="week-info">
+         <div class="week-title">Peak Performance Flow</div>
+         <div class="week-focus">Everything: 45-min non-stop · Max intensity · Breath under fire</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Centering <span class="seq-time">· 5 min</span></div>
+           <div class="poses"><span class="pose">Kapalabhati 3 rounds</span><span class="pose">Power intention setting</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Maximum Flow <span class="seq-time">· 45 min</span></div>
+           <div class="poses">
+             <span class="pose">Sun Sals × 7</span>
+             <span class="pose">Full warrior + balance sequence</span>
+             <span class="pose">Side Crow or Crow</span>
+             <span class="pose">Pincha or Headstand</span>
+             <span class="pose">Wheel × 3</span>
+             <span class="pose">Hanumanasana both sides</span>
+           </div>
+           <p class="cue">"This is the summit. Stay on your breath. Everything else is just movement."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Deep Rest <span class="seq-time">· 10 min</span></div>
+           <div class="poses"><span class="pose">Reclined butterfly 3 min</span><span class="pose">Savasana 7 min</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="progress-bar-wrap">
+     <div class="progress-bar-label">5-Month Journey</div>
+     <div class="progress-track"><div class="progress-fill" style="width:80%"></div></div>
+     <div class="progress-months">
+       <span class="pm done">Foundation</span>
+       <span class="pm done">Building</span>
+       <span class="pm done">Deepening</span>
+       <span class="pm done">Expanding</span>
+       <span class="pm">Integration</span>
+     </div>
+   </div>
+ </div>
+
+ <!-- MONTH 5 -->
+ <div class="month-panel" id="month-4">
+   <div class="month-header">
+     <div class="month-title-group">
+       <div class="month-number">05</div>
+       <div class="month-name">Integration</div>
+       <div class="month-theme">You Are the Practice</div>
+     </div>
+     <div class="month-intention">
+       <strong>Teacher's Intention</strong>
+       Students design aspects of their flow. Self-directed practice within structure. Celebrate the journey, consolidate gains, and set the foundation for independent practice beyond these five months.
+     </div>
+   </div>
+
+   <div class="legend">
+     <div class="legend-item"><span class="legend-dot ld-base"></span> Familiar pose</div>
+     <div class="legend-item"><span class="legend-dot ld-peak"></span> Peak pose</div>
+     <div class="legend-item"><span class="legend-dot ld-new"></span> Newly introduced</div>
+   </div>
+
+   <p class="weeks-label">4 Sessions</p>
+
+   <div class="week" id="w17">
+     <div class="week-header" onclick="toggleWeek('w17')">
+       <span class="week-num">17</span>
+       <div class="week-info">
+         <div class="week-title">Your Weak Link</div>
+         <div class="week-focus">Each student chooses their peak pose goal for the month</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Centering — Reflection <span class="seq-time">· 10 min</span></div>
+           <div class="poses"><span class="pose">Journaling / intention writing</span><span class="pose">What has changed in 4 months?</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Sun Salutations <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Sun Sal A × 4</span><span class="pose">Sun Sal B × 4</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Personal Goal Flow <span class="seq-time">· 25 min</span></div>
+           <div class="poses">
+             <span class="pose">Teacher leads full-body sequence</span>
+             <span class="pose new">Students choose their peak pose focus</span>
+             <span class="pose">Small group partner assists</span>
+           </div>
+           <p class="cue">"Your practice is now yours. I'm just here to hold space."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Cool-down <span class="seq-time">· 13 min</span></div>
+           <div class="poses"><span class="pose">Yin holds student's choice</span><span class="pose">Extended Savasana 8 min</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="week" id="w18">
+     <div class="week-header" onclick="toggleWeek('w18')">
+       <span class="week-num">18</span>
+       <div class="week-info">
+         <div class="week-title">The Yin & Yang</div>
+         <div class="week-focus">50% power flow · 50% deep yin holds · Nervous system balance</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Power Half <span class="seq-time">· 28 min</span></div>
+           <div class="poses"><span class="pose">Sun Sals × 5</span><span class="pose">Full standing flow</span><span class="pose">Crow or inversion of choice</span><span class="pose">Wheel</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Yin Transition <span class="seq-time">· 2 min</span></div>
+           <div class="poses"><span class="pose">Slow exhale × 10 (parasympathetic shift)</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Deep Yin Half <span class="seq-time">· 22 min</span></div>
+           <div class="poses">
+             <span class="pose">Dragon 3 min each side</span>
+             <span class="pose">Sleeping Swan 3 min</span>
+             <span class="pose">Seated forward fold 3 min</span>
+             <span class="pose">Savasana 7 min</span>
+           </div>
+           <p class="cue">"Let the body soften completely. You've earned this rest."</p>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="week" id="w19">
+     <div class="week-header" onclick="toggleWeek('w19')">
+       <span class="week-num">19</span>
+       <div class="week-info">
+         <div class="week-title">Student-Led Sections</div>
+         <div class="week-focus">Peer teaching moments · Community · Refinement</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Teacher-led Opening <span class="seq-time">· 12 min</span></div>
+           <div class="poses"><span class="pose">Pranayama</span><span class="pose">Sun Sal A × 3</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Community Flow <span class="seq-time">· 30 min</span></div>
+           <div class="poses">
+             <span class="pose">Students cue 2–3 poses each (pairs)</span>
+             <span class="pose">Teacher circulates and assists</span>
+             <span class="pose">Full-body coverage by the group</span>
+           </div>
+           <p class="cue">"Teaching is the deepest form of learning. Notice what you notice."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Closing <span class="seq-time">· 18 min</span></div>
+           <div class="poses"><span class="pose">Teacher leads cool-down</span><span class="pose">Gratitude meditation</span><span class="pose">Extended Savasana</span></div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="week" id="w20">
+     <div class="week-header" onclick="toggleWeek('w20')">
+       <span class="week-num">20</span>
+       <div class="week-info">
+         <div class="week-title">The Full Circle</div>
+         <div class="week-focus">Complete journey flow · Celebrate growth · Where do you go from here</div>
+       </div>
+       <span class="week-toggle">+</span>
+     </div>
+     <div class="week-body">
+       <div class="sequence">
+         <div class="seq-section">
+           <div class="seq-label">Reflection Opening <span class="seq-time">· 8 min</span></div>
+           <div class="poses"><span class="pose">Return to Week 1 centering posture</span><span class="pose">Notice what has changed</span><span class="pose">Ujjayi breath — your first teacher</span></div>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Full Journey Flow <span class="seq-time">· 35 min</span></div>
+           <div class="poses">
+             <span class="pose">Sun Sals × 6</span>
+             <span class="pose">Complete warrior arc</span>
+             <span class="pose">Crow + Inversion</span>
+             <span class="pose">Backbend</span>
+             <span class="pose">Hip opener</span>
+             <span class="pose">Twist</span>
+           </div>
+           <p class="cue">"This was never about the poses. It was about who you became in the journey toward them."</p>
+         </div>
+         <div class="seq-section">
+           <div class="seq-label">Closing Ceremony <span class="seq-time">· 17 min</span></div>
+           <div class="poses">
+             <span class="pose">Pigeon — one final deep hold</span>
+             <span class="pose new">Yoga Nidra 10 min</span>
+             <span class="pose">Namaste circle</span>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="progress-bar-wrap">
+     <div class="progress-bar-label">5-Month Journey</div>
+     <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
+     <div class="progress-months">
+       <span class="pm done">Foundation</span>
+       <span class="pm done">Building</span>
+       <span class="pm done">Deepening</span>
+       <span class="pm done">Expanding</span>
+       <span class="pm done">Integration</span>
+     </div>
+   </div>
+ </div>
+
+</div><!-- /main -->
+
+<script>
+ function showMonth(index) {
+   document.querySelectorAll('.month-panel').forEach((p, i) => {
+     p.classList.toggle('active', i === index);
+   });
+   document.querySelectorAll('.nav-btn').forEach((b, i) => {
+     b.classList.toggle('active', i === index);
+   });
+   window.scrollTo({ top: 0, behavior: 'smooth' });
+ }
+
+ function toggleWeek(id) {
+   const week = document.getElementById(id);
+   week.classList.toggle('open');
+ }
+</script>
+</body>
+</html>
+Sincerely,
+Sherine Elgendy
